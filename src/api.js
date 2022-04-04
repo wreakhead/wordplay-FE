@@ -28,6 +28,8 @@ import {
   updateWordFetchSucess,
 } from "./redux/updateWord";
 
+axios.defaults.baseURL = "https://wordplay-server.herokuapp.com";
+
 export const checkLoggedIn = async (dispatch, navigate, to) => {
   dispatch(userDataFetchStart());
 
