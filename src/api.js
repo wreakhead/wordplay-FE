@@ -35,9 +35,7 @@ export const checkLoggedIn = async (dispatch, navigate, to) => {
 
   try {
     const res = await axios.get(`${URL}/user/check`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: {},
       withCredentials: "include",
     });
     dispatch(userDataFetchSucess(res.data));
@@ -53,7 +51,6 @@ export const loginUser = async (user, dispatch, navigate) => {
   try {
     const res = await axios.post(`${URL}/user/signin`, user, {
       headers: {
-        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -70,9 +67,7 @@ export const getWordData = async (dispatch, navigate) => {
   dispatch(wordDataFetchStart());
   try {
     const res = await axios.get(`${URL}/word/`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: {},
       withCredentials: "include",
     });
     const sorted = res.data.sort((p1, p2) => {
@@ -89,7 +84,6 @@ export const addNewWord = async (data, dispatch) => {
   try {
     const res = await axios.post(`${URL}/word/add`, data, {
       headers: {
-        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -107,7 +101,6 @@ export const delWord = async (id, dispatch) => {
   try {
     const res = await axios.delete(`${URL}/word/${id}`, {
       headers: {
-        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -124,7 +117,6 @@ export const updateWord = async (id, data, dispatch) => {
   try {
     const res = await axios.put(`${URL}/word/${id}`, data, {
       headers: {
-        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
       },
@@ -139,9 +131,6 @@ export const updateWord = async (id, data, dispatch) => {
 export const signout = async () => {
   try {
     const res = await axios.get(`${URL}/user/signout`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
       withCredentials: "include",
     });
     //window.location.reload();
