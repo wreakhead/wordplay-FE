@@ -35,7 +35,6 @@ export const checkLoggedIn = async (dispatch, navigate, to) => {
 
   try {
     const res = await axios.get(`${URL}/user/check`, {
-      headers: {},
       withCredentials: "include",
     });
     dispatch(userDataFetchSucess(res.data));
@@ -67,7 +66,6 @@ export const getWordData = async (dispatch, navigate) => {
   dispatch(wordDataFetchStart());
   try {
     const res = await axios.get(`${URL}/word/`, {
-      headers: {},
       withCredentials: "include",
     });
     const sorted = res.data.sort((p1, p2) => {
