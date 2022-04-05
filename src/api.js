@@ -35,10 +35,10 @@ export const checkLoggedIn = async (dispatch, navigate, to) => {
 
   try {
     const res = await axios.get(`${URL}/user/check`, {
-      withCredentials: "include",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
+      withCredentials: "include",
     });
     dispatch(userDataFetchSucess(res.data));
     if (to) navigate(to);
@@ -53,9 +53,9 @@ export const loginUser = async (user, dispatch, navigate) => {
   try {
     const res = await axios.post(`${URL}/user/signin`, user, {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -70,10 +70,10 @@ export const getWordData = async (dispatch, navigate) => {
   dispatch(wordDataFetchStart());
   try {
     const res = await axios.get(`${URL}/word/`, {
-      withCredentials: "include",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
+      withCredentials: "include",
     });
     const sorted = res.data.sort((p1, p2) => {
       return new Date(p2.createdAt) - new Date(p1.createdAt);
@@ -89,9 +89,9 @@ export const addNewWord = async (data, dispatch) => {
   try {
     const res = await axios.post(`${URL}/word/add`, data, {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -107,9 +107,9 @@ export const delWord = async (id, dispatch) => {
   try {
     const res = await axios.delete(`${URL}/word/${id}`, {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -124,9 +124,9 @@ export const updateWord = async (id, data, dispatch) => {
   try {
     const res = await axios.put(`${URL}/word/${id}`, data, {
       headers: {
+        "Access-Control-Allow-Origin": "*",
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -139,8 +139,10 @@ export const updateWord = async (id, data, dispatch) => {
 export const signout = async () => {
   try {
     const res = await axios.get(`${URL}/user/signout`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       withCredentials: "include",
-      "Access-Control-Allow-Origin": "*",
     });
     window.location.reload();
   } catch (error) {
