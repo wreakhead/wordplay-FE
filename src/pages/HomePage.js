@@ -10,7 +10,7 @@ export default function Homepage() {
   const navigate = useNavigate();
   const newWordAdded = useSelector((state) => state.addWord);
   const wordDeleted = useSelector((state) => state.delWord);
-  const updateDeleted = useSelector((state) => state.updateWord);
+  const updated = useSelector((state) => state.updateWord);
 
   const check = async () => {
     try {
@@ -29,7 +29,7 @@ export default function Homepage() {
   useEffect(() => {
     check();
     getData();
-  }, [newWordAdded.data, wordDeleted.pending, updateDeleted.pending]);
+  }, [newWordAdded.data, wordDeleted.pending, updated.pending]);
   return (
     <div className="container">
       <Nav />

@@ -17,7 +17,6 @@ export default function LoginForm() {
     };
 
     await loginUser(data, dispatch, navigate);
-    console.log(login);
   };
 
   return (

@@ -34,12 +34,8 @@ export const checkLoggedIn = async (dispatch, navigate, to) => {
   dispatch(userDataFetchStart());
 
   try {
-    
     const res = await axios.get(`${URL}/user/check`, {
       withCredentials: "include",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
     });
     dispatch(userDataFetchSucess(res.data));
     if (to) navigate(to);
@@ -56,7 +52,6 @@ export const loginUser = async (user, dispatch, navigate) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -71,9 +66,6 @@ export const getWordData = async (dispatch, navigate) => {
   dispatch(wordDataFetchStart());
   try {
     const res = await axios.get(`${URL}/word/`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
       withCredentials: "include",
     });
     const sorted = res.data.sort((p1, p2) => {
@@ -92,7 +84,6 @@ export const addNewWord = async (data, dispatch) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -110,7 +101,6 @@ export const delWord = async (id, dispatch) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -127,7 +117,6 @@ export const updateWord = async (id, data, dispatch) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -139,12 +128,7 @@ export const updateWord = async (id, data, dispatch) => {
 
 export const signout = async () => {
   try {
-    const res = await axios.post(`${URL}/user/signout`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
+    const res = await axios.get(`${URL}/user/signout`, {
       withCredentials: "include",
     });
     window.location.reload();

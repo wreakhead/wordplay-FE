@@ -31,7 +31,7 @@ export default function Home() {
               Add
             </button>
           </div>
-          <div className="col-10">
+          <div className="col-lg-10 mt-lg-0 mt-2">
             <div className="totalWords">
               Total Words : {wordData.data?.length}
             </div>

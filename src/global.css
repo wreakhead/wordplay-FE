@@ -89,7 +89,7 @@ body {
   align-items: center;
   border-radius: 20px;
   padding: 5px;
-  padding-right: 10px;
+
   height: 100%;
   width: 100%;
   color: black;
@@ -130,4 +130,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.options:hover {
+  cursor: pointer;
 }

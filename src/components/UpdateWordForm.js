@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateWord } from "../api";
 
 export default function UpdateWordForm(props) {
-  const addWord = useSelector((state) => state.addWord);
+  const pending = useSelector((state) => state.updateWord);
   const dispatch = useDispatch();
   const word = useRef();
   const mean = useRef();
@@ -16,7 +16,6 @@ export default function UpdateWordForm(props) {
 
     await updateWord(props.id, data, dispatch);
   };
-
   return (
     <div className="">
       <div className="">
@@ -28,6 +27,7 @@ export default function UpdateWordForm(props) {
               type="text"
               className="loginInput m-1"
               placeholder="word"
+              defaultValue={props.word}
             />
             <input
               ref={mean}
@@ -35,13 +35,14 @@ export default function UpdateWordForm(props) {
               type="text"
               className="loginInput m-1"
               placeholder="meaning"
+              defaultValue={props.meaning}
             />
           </div>
           <div className="container">
             <div className="row">
               <div className="col">
                 <button
-                  disabled={addWord.pending}
+                  disabled={pending.pending}
                   type="submit"
                   className="loginButton btn"
                 >

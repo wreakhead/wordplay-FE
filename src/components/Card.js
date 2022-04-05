@@ -86,7 +86,11 @@ export default function Card(props) {
               ></button>
             </div>
             <div className="modal-body">
-              <UpdateWordForm id={props.data._id} />
+              <UpdateWordForm
+                id={props.data._id}
+                word={props.data.word}
+                meaning={props.data.meaning}
+              />
             </div>
             <div className="modal-footer">
               <button
