@@ -144,7 +144,7 @@ export const signout = async () => {
       },
       withCredentials: "include",
     });
-    window.location.reload();
+    //window.location.reload();
   } catch (error) {
     console.log(error);
   }
