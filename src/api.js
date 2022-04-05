@@ -28,13 +28,14 @@ import {
   updateWordFetchSucess,
 } from "./redux/updateWord";
 
-axios.defaults.baseURL = "https://wordplay-server.herokuapp.com";
+const URL = process.env.REACT_APP_API;
 
 export const checkLoggedIn = async (dispatch, navigate, to) => {
   dispatch(userDataFetchStart());
 
   try {
-    const res = await axios.get(`/api/user/check`, {
+    
+    const res = await axios.get(`${URL}/user/check`, {
       withCredentials: "include",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -51,10 +52,11 @@ export const checkLoggedIn = async (dispatch, navigate, to) => {
 export const loginUser = async (user, dispatch, navigate) => {
   dispatch(userDataFetchStart());
   try {
-    const res = await axios.post(`/api/user/signin`, user, {
+    const res = await axios.post(`${URL}/user/signin`, user, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -68,10 +70,9 @@ export const loginUser = async (user, dispatch, navigate) => {
 export const getWordData = async (dispatch, navigate) => {
   dispatch(wordDataFetchStart());
   try {
-    const res = await axios.get(`/api/word/`, {
+    const res = await axios.get(`${URL}/word/`, {
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -87,10 +88,11 @@ export const getWordData = async (dispatch, navigate) => {
 export const addNewWord = async (data, dispatch) => {
   dispatch(addWordFetchStart());
   try {
-    const res = await axios.post(`/api/word/add`, data, {
+    const res = await axios.post(`${URL}/word/add`, data, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -104,10 +106,11 @@ export const addNewWord = async (data, dispatch) => {
 export const delWord = async (id, dispatch) => {
   dispatch(delWordFetchStart());
   try {
-    const res = await axios.delete(`/api/word/${id}`, {
+    const res = await axios.delete(`${URL}/word/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -120,10 +123,11 @@ export const delWord = async (id, dispatch) => {
 export const updateWord = async (id, data, dispatch) => {
   dispatch(updateWordFetchStart());
   try {
-    const res = await axios.put(`/api/word/${id}`, data, {
+    const res = await axios.put(`${URL}/word/${id}`, data, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
@@ -135,10 +139,11 @@ export const updateWord = async (id, data, dispatch) => {
 
 export const signout = async () => {
   try {
-    const res = await axios.post(`/api/user/signout`, {
+    const res = await axios.post(`${URL}/user/signout`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       withCredentials: "include",
     });
